@@ -4,7 +4,7 @@ const RootNavigationTheme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    background: '#000000',
+    background: '#010100',
     card: '#000000',
     border: '#121212',
     text: '#ffffff',
