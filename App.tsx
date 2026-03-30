@@ -8,24 +8,31 @@ import { store } from './src/store/store';
 import NavProvider from './src/navigations/Provider'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'react-native';
-import ToastManager from 'toastify-react-native/components/ToastManager';
+import Toast from 'react-native-toast-message';
+import { toastConfig } from './src/configs/Tost/TostConfig';
+import RootWraper from './src/layouts/wrapers/RootWraper';
 
 const App = () => {
   return (
     <SafeAreaProvider style={{ flex: 1 }}>
       <StatusBar
         translucent
-        backgroundColor="transparent"
+        backgroundColor="dark"
         barStyle="light-content"
       />
       <Provider store={store}>
         <PaperProvider>
           <NavigationContainer theme={themeProvider.NAVIGATION.ROOT_THEME}>
-            <ToastManager />
-            <NavProvider.ROOT_NAVIGATION />
+            <RootWraper>
+              <NavProvider.ROOT_NAVIGATION />
+            </RootWraper>
           </NavigationContainer>
         </PaperProvider>
       </Provider>
+      <Toast config={toastConfig}
+        position="top"
+        visibilityTime={1800}
+      />
     </SafeAreaProvider>
   )
 }

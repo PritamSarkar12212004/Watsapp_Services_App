@@ -8,7 +8,7 @@ interface ActionButtonProps {
     value: string;
 }
 
-const ActionButton: React.FC<ActionButtonProps> = ({ actionFun, loadingState, value }) => {
+const ProfileSetupButton: React.FC<ActionButtonProps> = ({ actionFun, loadingState, value }) => {
     return (
         <TouchableOpacity
             disabled={loadingState}
@@ -32,4 +32,4 @@ const ActionButton: React.FC<ActionButtonProps> = ({ actionFun, loadingState, va
     );
 };
 
-export default ActionButton;
+export default ProfileSetupButton;

@@ -5,10 +5,15 @@ const Stack = createNativeStackNavigator();
 const RootNavigation = () => {
     return (
         <Stack.Navigator screenOptions={{
-            headerShown: false
-        }}>
+            headerShown: false,
+            animation: "slide_from_right",
+            animationDuration: 300,
+            gestureEnabled: true,
+            fullScreenGestureEnabled: true,
+        }} initialRouteName={routeProvider.AUTH.ROOT_ROUTE} >
             <Stack.Screen name={routeProvider.AUTH.ROOT_ROUTE} component={navProvider.AUTH_NAVIGATION} />
-        </Stack.Navigator>
+            <Stack.Screen name={routeProvider.PROFILE_SETUP.ROOT_ROUTE} component={navProvider.PROFILE_NAVIGATION} />
+        </Stack.Navigator >
     )
 }
 export default RootNavigation

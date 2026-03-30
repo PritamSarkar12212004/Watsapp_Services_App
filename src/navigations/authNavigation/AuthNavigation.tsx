@@ -5,7 +5,9 @@ const Stack = createNativeStackNavigator();
 const AuthNavigation = () => {
     return (
         <Stack.Navigator screenOptions={{
-            headerShown: false
+            headerShown: false,
+            animation: "fade",
+            animationDuration: 250,
         }} initialRouteName={routeProvider.AUTH.AUTH_SPLASH_ROUTE}>
             <Stack.Screen name={routeProvider.AUTH.AUTH_SPLASH_ROUTE} component={screenProvider.AUTH_SCRREN.SPLASH_SCREEN} />
             <Stack.Screen name={routeProvider.AUTH.LOGIN_ROUTE} component={screenProvider.AUTH_SCRREN.LOGIN_SCREEN} />
