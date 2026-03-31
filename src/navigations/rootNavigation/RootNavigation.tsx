@@ -10,9 +10,10 @@ const RootNavigation = () => {
             animationDuration: 300,
             gestureEnabled: true,
             fullScreenGestureEnabled: true,
-        }} initialRouteName={routeProvider.AUTH.ROOT_ROUTE} >
+        }} initialRouteName={routeProvider.USER_ROUTE.ROOT_ROUTE} >
             <Stack.Screen name={routeProvider.AUTH.ROOT_ROUTE} component={navProvider.AUTH_NAVIGATION} />
             <Stack.Screen name={routeProvider.PROFILE_SETUP.ROOT_ROUTE} component={navProvider.PROFILE_NAVIGATION} />
+            <Stack.Screen name={routeProvider.USER_ROUTE.ROOT_ROUTE} component={navProvider.USER_NAVIGATION} />
         </Stack.Navigator >
     )
 }
