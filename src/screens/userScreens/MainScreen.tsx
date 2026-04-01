@@ -4,7 +4,7 @@ import React from 'react'
 const MainScreen = () => {
     return (
         <View>
-            <Text>MainScreen</Text>
+            <Text className='text-white'>MainScreen</Text>
         </View>
     )
 }

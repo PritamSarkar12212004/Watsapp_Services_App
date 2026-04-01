@@ -5,7 +5,7 @@ import MainScreen from './userScreens/MainScreen';
 import StatusScreen from './userScreens/StatusScreen';
 import ContactScreen from './userScreens/ContactScreen';
 import ProfileScreen from './userScreens/ProfileScreen';
-
+import SplashLoaderScreen from './splashScreen/SplashLoaderScreen';
 const Provider = {
   AUTH_SCRREN: {
     SPLASH_SCREEN: AuthSplashScreen,
@@ -19,6 +19,9 @@ const Provider = {
     STATUS_SCREEEN: StatusScreen,
     CONTACT_SCREEN: ContactScreen,
     PROFILE_SCREEN: ProfileScreen,
+  },
+  SPLASH_SCREEN: {
+    SPLASH_LOADER: SplashLoaderScreen,
   },
 };
 export default Provider;

@@ -6,6 +6,7 @@ import { setUserData } from '../../../store/slices/userSlice/UserSlice';
 import ServiceProvider from '../../../services/Provider';
 import KeyChainToken from '../../../constants/secure/keychain/KeyChainToken';
 import CoreProvider from '../../../core/Provider';
+import UserRoutes from '../../../constants/routes/userRoute/UserRoutes';
 interface ProfileSetupProp {
   navigation: any;
   setLoader: any;
@@ -37,7 +38,7 @@ const ProfileSetupCall = async ({
       profilePic,
       token,
     });
-    if (response.status === 200) {
+    if (response.status === 201) {
       const data = response.data.data;
       await ServiceProvider.SECURE_STORE.KEY_CHAIN.SET_VALUE({
         key: KeyChainToken.GLOBAL.ACCESS_TOKEN,
@@ -60,6 +61,10 @@ const ProfileSetupCall = async ({
       );
       dispatch(authSlicelogout());
       setLoader(false);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: UserRoutes.ROOT_ROUTE }],
+      });
     } else {
       Tost({
         status: 'error',

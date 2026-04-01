@@ -2,15 +2,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import screenProvider from '../../screens/Provider'
 import routeProvider from '../../constants/routes/Provider'
 const Stack = createNativeStackNavigator();
-const ProfileSetupNavigation = () => {
+const SplashNavigation = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
-            animation: "slide_from_bottom",
+            animation: "fade",
             animationDuration: 300,
-        }} initialRouteName={routeProvider.PROFILE_SETUP.PROFILE_SETUP_SCREEN_ROUTE}>
-            <Stack.Screen name={routeProvider.PROFILE_SETUP.PROFILE_SETUP_SCREEN_ROUTE} component={screenProvider.PROFILE_SETUP.PROFILE_SETUP_SCREEN} />
+        }} initialRouteName={routeProvider.SPLASH_ROUTE.SPLASH_LOADER}>
+            <Stack.Screen name={routeProvider.SPLASH_ROUTE.SPLASH_LOADER} component={screenProvider.SPLASH_SCREEN.SPLASH_LOADER} />
         </Stack.Navigator>
     )
 }
-export default ProfileSetupNavigation
+export default SplashNavigation
