@@ -30,6 +30,7 @@ const ProfileSetupCall = async ({
   dispatch,
 }: ProfileSetupProp) => {
   try {
+    const deviceId = CoreProvider.TOKEN.DEVICE_TOKEN.GET_DEVICE_TOKEN();
     const response = await Api.post(ServerRoutes.AUTH_SERVICE.PROFILE_SETUP, {
       wpnumber: phone,
       fullName,
@@ -37,16 +38,27 @@ const ProfileSetupCall = async ({
       age,
       profilePic,
       token,
+      deviceId,
     });
     if (response.status === 201) {
       const data = response.data.data;
+
       await ServiceProvider.SECURE_STORE.KEY_CHAIN.SET_VALUE({
         key: KeyChainToken.GLOBAL.ACCESS_TOKEN,
         value: data.accessToken,
       });
+      await ServiceProvider.SECURE_STORE.KEY_CHAIN.SET_VALUE({
+        key: KeyChainToken.GLOBAL.REFRESH_TOKEN,
+        value: data.refreshToken,
+      });
+
       CoreProvider.TOKEN.ACCESS_TOKEN.SET_TOKEN({
         token: data.accessToken,
       });
+      CoreProvider.TOKEN.ACCESS_TOKEN.SET_TOKEN({
+        token: data.refreshToken,
+      });
+      
       dispatch(
         setUserData({
           age: data.age,
@@ -57,6 +69,8 @@ const ProfileSetupCall = async ({
           profilePic: data.profilePic,
           wpnumber: data.wpnumber,
           _id: data._id,
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
         }),
       );
       dispatch(authSlicelogout());

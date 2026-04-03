@@ -8,6 +8,8 @@ interface UserState {
   profilePic: string | null;
   wpnumber: string | null;
   _id: string | null;
+  refreshToken: string | null;
+  accessToken: string | null;
 }
 
 const initialState: UserState = {
@@ -19,6 +21,8 @@ const initialState: UserState = {
   profilePic: null,
   wpnumber: null,
   _id: null,
+  refreshToken: null,
+  accessToken: null,
 };
 
 export const UserSlice = createSlice({
@@ -34,6 +38,8 @@ export const UserSlice = createSlice({
       state.gender = action.payload.gender;
       state.profilePic = action.payload.profilePic;
       state.wpnumber = action.payload.wpnumber;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
     },
     userSliceLogOut: state => {
       state._id = null;
@@ -44,6 +50,8 @@ export const UserSlice = createSlice({
       state.gender = null;
       state.profilePic = null;
       state.wpnumber = null;
+      state.accessToken = null;
+      state.refreshToken = null;
     },
   },
 });
